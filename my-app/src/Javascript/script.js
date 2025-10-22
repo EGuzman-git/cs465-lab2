@@ -20,5 +20,15 @@ function onMapClick(e){
     var description = prompt("Enter Description:");
     var marker = L.marker(e.latlng, {title:description}).addTo(map);
     list.push(marker);
+
+    // Create list of entered titles in the HTML
+    var htmlToEdit = document.getElementById("testing");
+    htmlToEdit.innerHTML = "";
+    list.forEach(element => {
+        var li = document.createElement("li");
+        li.textContent = element.options.title;
+        htmlToEdit.appendChild(li);
+    });
+    console.log(list);
 }
 map.on('click', onMapClick);
